@@ -13,15 +13,17 @@ for i in range(0, n+1):
 print(a)
 
 dp = []
-tmp = 100001
 
-for i in range(0, k):
+
+for i in range(0, k+1):
+    tmp = 100001
     if(i==0):
         dp.append(0)  
-    for j in range(1, n):
+        continue
+    for j in range(1, len(a)):
         if(i-a[j]>=0):
             tmp = min(tmp, dp[i-a[j]])
-    dp.append(tmp)
+    dp.append(tmp+1)
 
 print(dp[k])
 
