@@ -1,4 +1,3 @@
-#DFS 수정
 graph = {
 'A': ['B'],
 'B': ['A', 'C', 'H'],
@@ -14,6 +13,8 @@ graph = {
 'L': ['K'],
 'M': ['H']
 }
+
+#DFS
 visited = []
 stack = [] #FILO
 stack.append('A')
@@ -23,8 +24,21 @@ while stack:
 
     if check not in visited:
         visited.append(check)
-        print("graph[check] =", graph[check])
         stack.extend(graph[check])
-        print("stack =", stack)
 
-print("visited= ", visited)
+print("DFS = ", visited)
+
+
+#BFS
+visited = []
+queue = [] #FIFO
+queue.append('A')
+
+while queue:
+    check = queue.pop(0)
+
+    if check not in visited:
+        visited.append(check)
+        queue.extend(graph[check])
+
+print("BFS = ", visited)
