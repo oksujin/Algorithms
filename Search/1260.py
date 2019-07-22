@@ -1,41 +1,62 @@
 
+def Search_Printer(result):
+    print(" ".join(result))
+
 #BFS
 def bfs(graph, start):
-    for i in range(0, len(graph)):
-       graph[i].sort()
+    # for i in range(0, len(graph)):
+    #    graph[i].sort()
+    if graph[start] is []:
+        print(start)
+        return 
 
- 
     visited = []
-    queue = [] #FIFO
-    queue.append(start)
+    queue = [start] #FIFO
 
     while queue:
         check = queue.pop(0)
+        tmp = []
         if check not in visited:
             visited.append(check)
-            queue.extend(graph[check])
+            tmp = list(set(graph[check])-set(visited))
+            tmp.sort()
+            queue.extend(tmp)
+            # print("queue = ", queue)
 
-    print(visited)
+    result = list(map(str,visited))
+    Search_Printer(result)
+    #print(visited)
 
 
 #DFS
 def dfs(graph, start):
-    for i in range(0, len(graph)):
-        graph[i].sort(reverse=True)
-        # graph[i].reverse는 순서만 거꾸로 바꿔준다!
-
+    # for i in range(0, len(graph)):
+    #     graph[i].sort(reverse=True)
+    #     # graph[i].reverse는 순서만 거꾸로 바꿔준다!
+    if graph[start] is []:
+        print(start)
+        return 
+        
     visited = []
-    stack = [] #FILO
-    stack.append(start)
+    stack = [start] #FILO
+    # print("graph = ", graph)
 
     while stack:
         check = stack.pop()
-
+        # print("check= ", check)
+        tmp = []
         if check not in visited:
             visited.append(check)
-            stack.extend(graph[check])
+            # print("visited =", visited)
+            tmp = list(set(graph[check])-set(visited))
+            tmp.sort(reverse=True)
+            # print("tmp =", tmp)
+            stack.extend(tmp)
+            # print("stack =", stack)
 
-    print(visited)
+    result = list(map(str,visited))
+    Search_Printer(result)
+    #print(visited)
 
 
 vertex, edge, start = list(map(int, input().split()))
