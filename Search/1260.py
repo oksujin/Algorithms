@@ -1,6 +1,5 @@
 # 백준 1260 DFS와 BFS
 
-
 def Search_Printer(result):
     print(" ".join(result))
     """
