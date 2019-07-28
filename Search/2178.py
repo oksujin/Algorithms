@@ -9,7 +9,8 @@ def bfs(start, end):
         for i in range (0, 4):
             ny = y + dy[i]
             nx = x + dx[i]
-            #if 0 <= nx < m and 0 <= ny < n: # 범위 안인지 확인
+            # 최소경로는 무조건 bfs / 경로의 수는 dfs
+            # if 0 <= nx < m and 0 <= ny < n: # 범위 안인지 확인
             if 0 <= nx < m and 0 <= ny < n and visit[ny][nx] == False and map[ny][nx] == 1:
                 queue.append([ny,nx])
                 visit[ny][nx] = True
